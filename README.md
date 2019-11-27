@@ -1,2 +1,2 @@
 # latex-templates
-LaTeX templates for my thesis, biblography, Resume/CV, etc.
+LaTeX templates for my thesis, biblography, résumé/CV, etc.
