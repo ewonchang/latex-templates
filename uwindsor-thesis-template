@@ -1,0 +1,147 @@
+% This is a template document, a working progress, trying to replicate the UWindsor thesis template docx
+
+% Table of Contents: All front matter is listed starting with Declaration
+% Front matter assigned Roman numerals; chapters, pages numbered in Arabic numerals starting at one (1)
+% Margins: 1 inch everywhere; 1 ½ inch on leftrecommended
+
+\documentclass[12pt,letterpaper,oneside]{report}
+\usepackage[top=1in, bottom=1in, left=1.5in, right=1in]{geometry}
+\usepackage{setspace} %  \singlespacing, \doublespacing, \onehalfspacing and \setstretch{baselinestretch}
+\newcommand{\comment}[2]{#2} % for adding long comments. \comment{This is a long comment}
+\usepackage{blindtext} % add ramdom latin text
+% \usepackage{parskip}  % no indent, extra spacing between paragraghs (whihe also adjust the spacing of lists and other structures, so they don't get too far apart)
+% \usepackage{color}
+
+
+\begin{document}
+% We do not use the built-in titlepage, hence no top matter required
+
+\newpage % Title Page (page I, not shown)
+\pagenumbering{Roman} % start page number in capitalized Roman letter, i.e., I, II, ... Optionally, combine it with \setcounter{page}{anyintegernumber}
+\pagestyle{empty} % make page number invisible
+{\centering
+	\vspace{4cm}
+	{\large\bfseries Your Fancy Title Goes Here\\}
+	\vspace{1cm}
+	By\par
+	\vspace{1cm}
+	{\bfseries John Doe\\}
+	\vfill
+	A Thesis \\
+	Submitted to the Faculty of Graduate Studies \\
+	through the Department of Mechanical, Automotive \& Materials Engineering\\
+	in Partial Fulfillment of the Requirements for\\
+	the Degree of Master of Applied Science\\
+	at the University of Windsor\\
+	\vfill
+	Windsor, Ontario, Canada\\
+	\vspace{1cm}
+	2020\\
+	\vspace{1cm}
+	\copyright \space 2020 John Doe\\
+}
+
+
+\newpage % Approval Page (page II, not shown)
+\pagestyle{empty} % make page number invisible
+{\centering
+	\vspace{4cm}
+	{\large\bfseries Integrated Thermal Systems and Controls Modeling for AUTO Mode Simulation and Optimization\\}
+	\vspace{1cm}
+	By\par
+	\vspace{1cm}
+	{\bfseries John Doe\\}
+	\vfill
+	APPROVED BY\\
+	\vfill
+	\begin{tabular}[t]{c}
+           \rule{15em}{0.4pt}\\
+           J. Doe\\
+	Department of Mechanical, Automotive \& Materials Engineering \\
+           \end{tabular}
+	\vspace{1.5cm}
+	\begin{tabular}[t]{c}
+           \rule{15em}{0.4pt}\\
+           J. Doe\\
+	Department of Mechanical, Automotive \& Materials Engineering \\
+           \end{tabular}
+	\vspace{1.5cm}
+	\begin{tabular}[t]{c}
+           \rule{15em}{0.4pt}\\
+           J. Doe, Advisor\\
+	Department of Mechanical, Automotive \& Materials Engineering \\
+           \end{tabular}
+	\vfill
+	\hfill August 28\textsuperscript{th}, 2020
+}
+
+
+\newpage % Declaration of Originality (Page III, shown)
+\chapter*{Declaration of Originality} % * for unnumbered heading
+\addcontentsline{toc}{chapter}{Declaration of Originality} % adding unnumbered heading to ToC
+I hereby certify that I am the sole author of this thesis and that no part of this thesis has been published or submitted for publication. \par I certify that, to the best of my knowledge, my thesis does not infringe upon anyone’s copyright nor violate any proprietary rights and that any ideas, techniques, quotations, or any other material from the work of other people included in my thesis, published or otherwise, are fully acknowledged in accordance with the standard referencing practices. Furthermore, to the extent that I have included copyrighted material that surpasses the bounds of fair dealing within the meaning of the Canada Copyright Act, I certify that I have obtained a written permission from the copyright owner(s) to include such material(s) in my thesis and have included copies of such copyright clearances to my appendix. \par I declare that this is a true copy of my thesis, including any final revisions, as approved by my thesis committee and the Graduate Studies office, and that this thesis has not been submitted for a higher degree to any other University or Institution.
+
+
+\chapter*{Abstract} % Abstract (page IV, shown)
+\addcontentsline{toc}{chapter}{Abstract} % adding unnumbered heading to ToC
+\blindtext \blindtext \blindtext % use \Blindtext to create more random latin text
+
+
+% (Optional)(Optional) Dedication
+\chapter*{Dedication}
+\addcontentsline{toc}{chapter}{Dedication}
+
+
+% (Optional) Acknowledgements
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+
+
+\tableofcontents
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables} % add an entry to ToC
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures} % add an entry to ToC
+
+
+% (Optional) LIST OF APPENDICES
+
+% (Optional) LIST OF abbreviations/SYMBOLS
+% (Optional) NOMENCLATURE
+
+% page number (I, II, ...) ends at here
+% --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% page number (1, 2, ...) starts from here
+
+\newpage
+\pagenumbering{arabic}
+\doublespacing % refer to \usepackage{setspace}
+
+\chapter{Introduction}
+\pagenumbering{arabic} 
+This chapter's content...
+
+\section{Section}
+This section's content...
+
+\subsection{Subsection}
+This subsection's content...
+
+\subsubsection{Subsubsection}
+This subsubsection's content...
+
+\paragraph{The title of the paragraph}~\\
+The content of the paragraph.
+
+% Reference/Bibliography goes here
+
+\appendix
+\chapter{Title of First Appendix}
+\section{Some Stuff}
+\chapter{Title of Second Appendix}
+
+% Vita Auctoris
+
+\end{document}
+
+% small tricks are listed below
