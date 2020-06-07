@@ -5,147 +5,85 @@
 % Margins: 1 inch everywhere; 1 ½ inch on leftrecommended
 
 \documentclass[12pt,letterpaper,oneside]{report}
+
+% beginning of preambles
+
+\usepackage{ifxetex} %  To make the document support both pdfLaTeX and Lua / XeLaTeX
+\ifxetex
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX} % To support LaTeX quoting style
+\usepackage{unicode-math} % for XITS
+\setmainfont{XITS} % Any system font and font packages that are available as OpenType or TrueType
+\setmathfont{XITS Math}
+\else
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} % make sure cm-super is installed
+\usepackage{lmodern} %\usefont{T1}{cmr}{m}{n} % for local font selection
+\usepackage{textcomp} % \textdegree to print the degree sign for temperature and angle
+\fi
+
 \usepackage[top=1in, bottom=1in, left=1.5in, right=1in]{geometry}
-\usepackage{setspace} %  \singlespacing, \doublespacing, \onehalfspacing and \setstretch{baselinestretch}
+\usepackage{setspace} %  \singlespacing (default), \doublespacing, \onehalfspacing and \setstretch{baselinestretch}
 \newcommand{\comment}[2]{#2} % for adding long comments. \comment{This is a long comment}
-\usepackage{blindtext} % add ramdom latin text
+\usepackage{blindtext} % add random latin text
 % \usepackage{parskip}  % no indent, extra spacing between paragraghs (whihe also adjust the spacing of lists and other structures, so they don't get too far apart)
 % \usepackage{color}
+\usepackage{array} % to be used with graphicx
+\usepackage{graphicx}
+\graphicspath{{./img/}}
+
+\usepackage{hyperref} % load this package last in preamable but before glossaries
+
+\usepackage[acronym]{glossaries} % to generate List of Abbreviations and List of Nomenclature; sorting is performed by package makeindex
+\setacronymstyle{long-short} % style for acronym/abbreviation only, not applicable to nomenclature
+\makeglossaries % to manually build PDF document, run the commands: pdflatex/xelatex myDoc; makeglossaries myDoc; pdflatex/xelatex myDoc
+\include{./tex/abbreviation} % refer to glossaries package beginners guide (section Multiple Glossaries)
+\include{./tex/nomenclature} % glossary entries must be placed in preamables after \makeglossaries
 
 
 \begin{document}
-% We do not use the built-in titlepage, hence no top matter required
 
-\newpage % Title Page (page I, not shown)
-\pagenumbering{Roman} % start page number in capitalized Roman letter, i.e., I, II, ... Optionally, combine it with \setcounter{page}{anyintegernumber}
-\pagestyle{empty} % make page number invisible
-{\centering
-	\vspace{4cm}
-	{\large\bfseries Your Fancy Title Goes Here\\}
-	\vspace{1cm}
-	By\par
-	\vspace{1cm}
-	{\bfseries John Doe\\}
-	\vfill
-	A Thesis \\
-	Submitted to the Faculty of Graduate Studies \\
-	through the Department of Mechanical, Automotive \& Materials Engineering\\
-	in Partial Fulfillment of the Requirements for\\
-	the Degree of Master of Applied Science\\
-	at the University of Windsor\\
-	\vfill
-	Windsor, Ontario, Canada\\
-	\vspace{1cm}
-	2020\\
-	\vspace{1cm}
-	\copyright \space 2020 John Doe\\
-}
+\singlespacing
+\include{./tex/I_title} % Title Page (page I, not shown) % \pagestyle{empty}
+\include{./tex/II_approval} % Approval Page (page II, not shown)
 
+\onehalfspacing
+\include{./tex/III_declaration} % Declaration of Originality (Page III, shown) % \pagestyle{plain}
+\include{./tex/IV_abstract} % Abstract (page IV, shown)
+% \include{./tex/dedication} (Optional)
+\include{./tex/V_acknowledgements} % (Optional)
 
-\newpage % Approval Page (page II, not shown)
-\pagestyle{empty} % make page number invisible
-{\centering
-	\vspace{4cm}
-	{\large\bfseries Your Fancy Title Goes Here\\}
-	\vspace{1cm}
-	By\par
-	\vspace{1cm}
-	{\bfseries John Doe\\}
-	\vfill
-	APPROVED BY\\
-	\vfill
-	\begin{tabular}[t]{c}
-           \rule{15em}{0.4pt}\\
-           J. Doe\\
-	Department of Mechanical, Automotive \& Materials Engineering \\
-           \end{tabular}
-	   
-	\vspace{1.5cm}
-	\begin{tabular}[t]{c}
-           \rule{15em}{0.4pt}\\
-           J. Doe\\
-	Department of Mechanical, Automotive \& Materials Engineering \\
-           \end{tabular}
-	   
-	\vspace{1.5cm}
-	\begin{tabular}[t]{c}
-           \rule{15em}{0.4pt}\\
-           J. Doe, Advisor\\
-	Department of Mechanical, Automotive \& Materials Engineering \\
-           \end{tabular}
-	\vfill
-	\hfill August 28\textsuperscript{th}, 2020
-}
-
-
-\newpage % Declaration of Originality (Page III, shown)
-\chapter*{Declaration of Originality} % * for unnumbered heading
-\addcontentsline{toc}{chapter}{Declaration of Originality} % adding unnumbered heading to ToC
-I hereby certify that I am the sole author of this thesis and that no part of this thesis has been published or submitted for publication. \par I certify that, to the best of my knowledge, my thesis does not infringe upon anyone’s copyright nor violate any proprietary rights and that any ideas, techniques, quotations, or any other material from the work of other people included in my thesis, published or otherwise, are fully acknowledged in accordance with the standard referencing practices. Furthermore, to the extent that I have included copyrighted material that surpasses the bounds of fair dealing within the meaning of the Canada Copyright Act, I certify that I have obtained a written permission from the copyright owner(s) to include such material(s) in my thesis and have included copies of such copyright clearances to my appendix. \par I declare that this is a true copy of my thesis, including any final revisions, as approved by my thesis committee and the Graduate Studies office, and that this thesis has not been submitted for a higher degree to any other University or Institution.
-
-
-\chapter*{Abstract} % Abstract (page IV, shown)
-\addcontentsline{toc}{chapter}{Abstract} % adding unnumbered heading to ToC
-\blindtext \blindtext \blindtext % use \Blindtext to create more random latin text
-
-
-% (Optional)(Optional) Dedication
-\chapter*{Dedication}
-\addcontentsline{toc}{chapter}{Dedication}
-
-
-% (Optional) Acknowledgements
-\chapter*{Acknowledgements}
-\addcontentsline{toc}{chapter}{Acknowledgements}
-
-
-\tableofcontents
+\tableofcontents % \addcontentsline{toc}{chapter}{Contents} % or use \usepackage[nottoc]{tocbibind}
 \listoftables
-\addcontentsline{toc}{chapter}{List of Tables} % add an entry to ToC
+\addcontentsline{toc}{chapter}{List of Tables} % or use \usepackage[nottoc]{tocbibind}
 \listoffigures
-\addcontentsline{toc}{chapter}{List of Figures} % add an entry to ToC
+\addcontentsline{toc}{chapter}{List of Figures}
 
+\printglossary[type=\acronymtype,title=List of Abbreviations]
+\addcontentsline{toc}{chapter}{List of Abbreviations}
+\printglossary[title=Nomenclature]
+\addcontentsline{toc}{chapter}{Nomenclature}
 
-% (Optional) LIST OF APPENDICES
+% \include{./tex/loa}% (Optional) List of appendices
 
-% (Optional) LIST OF abbreviations/SYMBOLS
-% (Optional) NOMENCLATURE
 
 % page number (I, II, ...) ends at here
 % --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 % page number (1, 2, ...) starts from here
-
 \newpage
 \pagenumbering{arabic}
-\doublespacing % refer to \usepackage{setspace}
 
-\chapter{Introduction}
-\pagenumbering{arabic} 
-This chapter's content...
 
-\section{Section}
-This section's content...
+\include{./tex/chapter1}
+\include{./tex/chapter2}
 
-\subsection{Subsection}
-This subsection's content...
-
-\subsubsection{Subsubsection}
-This subsubsection's content...
-
-\paragraph{The title of the paragraph}~\\
-The content of the paragraph.
-
-% Reference/Bibliography goes here
 
 \bibliographystyle{ieeetr} % IEEEtran.bst has url 
-\bibliography{zotero} % use .bib file auto-generated by Zotero-better-bibtex
+\bibliography{reference} % use .bib file auto-generated by Zotero-better-bibtex
 \addcontentsline{toc}{chapter}{Bibliography}
 
 \appendix
-\chapter{Title of First Appendix}
-\section{Some Stuff}
-\chapter{Title of Second Appendix}
+\include{./tex/appendix}
 
-% Vita Auctoris (optional)
-
+%\include{./tex/Vita_Auctoris}% Vita Auctoris (Optional)
 \end{document}
